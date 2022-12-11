@@ -8,18 +8,21 @@ class ContentImageInline(admin.TabularInline):
     extra = 5
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['title', 'status']
+    list_display = ['title', 'status', 'image_tag']
     list_filter = ['status']
+    readonly_fields = ('image_tag',)
 
 
 class ContentAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'city', 'country', 'konum', 'status']
+    list_display = ['title', 'image_tag', 'category', 'city', 'country', 'konum', 'status']
+    readonly_fields = ('image_tag',)
     list_filter = ['status', 'category', 'country']
     inlines = [ContentImageInline]
 
 
 class ImagesAdmin(admin.ModelAdmin):
-    list_display = ['Content', 'title']
+    list_display = ['Content', 'title', 'image_tag']
+    readonly_fields = ('image_tag',)
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Content, ContentAdmin)
