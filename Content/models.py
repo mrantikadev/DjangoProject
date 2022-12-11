@@ -20,6 +20,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+
 class Content(models.Model):
     STATUS = (
         ('True', 'Evet'),
@@ -39,5 +40,13 @@ class Content(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+
+
+class Images(models.Model):
+    Content = models.ForeignKey(Content, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30, blank=True)
+    image = models.ImageField(blank=True, upload_to='images/')
     def __str__(self):
         return self.title

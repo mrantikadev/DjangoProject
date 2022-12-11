@@ -3,6 +3,7 @@
 
 <head>
 {% load static %}
+<script src="{% static 'js/main.js' %}"></script>
 <meta charset="utf-8">
     <title>{% block title %} Travelactivty {% endblock %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -27,6 +28,8 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     {% block head %} {% endblock %}
 </head>
+
+<body>
     {% include 'header.html' %}
     {% block navbar %} {% endblock %}
     {% block content %} {% endblock %}
@@ -34,7 +37,5 @@
     {% block body %} {% endblock %}
     {% include 'footer.html' %}
     {% block footer %} {% endblock %}
-<body>
-
 </body>
 </html>
