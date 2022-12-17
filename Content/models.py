@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields.files import ImageFieldFile
 from django.utils.safestring import mark_safe
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
@@ -44,7 +45,7 @@ class Content(models.Model):
     city = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
     konum = models.CharField(max_length=30)
-    detail = models.TextField()
+    detail = RichTextUploadingField(blank=True)
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
