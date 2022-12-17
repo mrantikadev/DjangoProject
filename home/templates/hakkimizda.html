@@ -1,0 +1,23 @@
+{% extends "homepage.html" %}
+
+{% block title %} Hakkımızda - {{ settings.company }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ settings.icon.url }}'>
+{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block body %}
+    <div class="section">
+        <div class="container">
+            <div class="row" style="margin-top: 20px;">
+                {{ settings.aboutus|safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

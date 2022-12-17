@@ -8,5 +8,17 @@ from home.models import Settings
 
 def index(request):
     settings = Settings.objects.get(pk=1)
-    context = {'settings':settings}
+    context = {'settings':settings, 'page': 'home'}
     return render(request, 'index.html', context)
+
+
+def hakkimizda(request):
+    settings = Settings.objects.get(pk=1)
+    context = {'settings':settings}
+    return render(request, 'hakkimizda.html', context)
+
+
+def referanslar(request):
+    settings = Settings.objects.get(pk=1)
+    context = {'settings':settings}
+    return render(request, 'referanslarimiz.html', context)
