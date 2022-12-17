@@ -3,5 +3,10 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from home.models import Settings
+
+
 def index(request):
-    return render(request, 'index.html')
+    settings = Settings.objects.get(pk=1)
+    context = {'settings':settings}
+    return render(request, 'index.html', context)
