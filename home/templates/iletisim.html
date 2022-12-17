@@ -1,0 +1,54 @@
+{% extends "homepage.html" %}
+
+{% block title %} Referanslarımız - {{ settings.company }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ settings.icon.url }}'>
+{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block body %}
+    <div class="section">
+        <div class="container">
+            <div class="row" style="margin-top: 20px;">
+                <h1 style="margin: auto; text-decoration: underline">
+                    İletişim Bilgileri
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="container-fluid py-5">
+                        <div class="container py-5">
+                            <div class="text-center mb-3 pb-3">
+                                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact</h6>
+                                <h1>Contact For Any Query</h1>
+                            </div>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="text-center">
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <input class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton" value="SEND FORM"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-top: 80px;">
+                    {{ settings.contact|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('hakkimizda/', views.hakkimizda, name='hakkimizda'),
     path('referanslar/', views.referanslar, name='referanslar'),
+    path('iletisim/', views.iletisim, name='iletisim'),
     path('home/', include('home.urls')),
     path('Content/', include('Content.urls')),
     path('admin/', admin.site.urls),
