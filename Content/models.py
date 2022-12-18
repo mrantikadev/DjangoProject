@@ -46,6 +46,7 @@ class Content(models.Model):
     country = models.CharField(max_length=30)
     konum = models.CharField(max_length=30)
     detail = RichTextUploadingField(blank=True)
+    slug = models.SlugField(blank=True, max_length=50)
     status = models.CharField(max_length=10, choices=STATUS)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)

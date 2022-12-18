@@ -5,11 +5,14 @@ from django.contrib import messages
 
 # Create your views here.
 from home.models import Settings, ContactFormu, ContactFormMessage
-
+from Content.models import Content
 
 def index(request):
     settings = Settings.objects.get(pk=1)
-    context = {'settings':settings, 'page': 'home'}
+    sliderdata = Content.objects.all()[:4]
+    context = {'settings':settings,
+               'page': 'home',
+               'sliderdata':sliderdata}
     return render(request, 'index.html', context)
 
 
