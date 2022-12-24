@@ -9,10 +9,17 @@ from Content.models import Content
 
 def index(request):
     settings = Settings.objects.get(pk=1)
-    sliderdata = Content.objects.all()[:4]
+    sliderdata = Content.objects.all()[:6]
+    contents = Content.objects.all()[:4]
+    lastcontents = Content.objects.all().order_by('-id')[:4]
+    randomcontents = Content.objects.all().order_by('?')[:4]
     context = {'settings':settings,
                'page': 'home',
-               'sliderdata':sliderdata}
+               'sliderdata':sliderdata,
+               'contents':contents,
+               'lastcontents':lastcontents,
+               'randomcontents':randomcontents
+               }
     return render(request, 'index.html', context)
 
 
