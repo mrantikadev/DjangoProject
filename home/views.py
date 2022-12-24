@@ -23,6 +23,13 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def aktiviteler(request):
+    settings = Settings.objects.get(pk=1)
+    randomcontents = Content.objects.all().order_by('?')
+    context = {'settings':settings,
+               'randomcontents':randomcontents}
+    return render(request, 'aktiviteler.html', context)
+
 def hakkimizda(request):
     settings = Settings.objects.get(pk=1)
     context = {'settings':settings}
