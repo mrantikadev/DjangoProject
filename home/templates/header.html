@@ -13,6 +13,9 @@
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
+                        {% if user.id is not None %}
+                        <a href="" style="margin-right: 10px"><i class="fa fa-user" style="margin-right: 10px"></i>{{ user.first_name }}</a>
+                        <a href="/logout/" style="margin-right: 10px; margin-left: 10px">Logout</a>
                         <a class="text-primary px-3" href="https://twitter.com/mrantika23" target="_blank">
                             <i class="fab fa-twitter"></i>
                         </a>
@@ -22,6 +25,12 @@
                         <a class="text-primary px-3" href="https://www.instagram.com/mrantika23/" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
+                        {% else %}
+                            <a href="/login/" style="margin-right: 10px"><i class="fa fa-unlock-alt" style="margin-right: 10px"></i>Login</a>
+                            <a href="/join/"><i class="fa fa-user-plus" style="margin-right: 10px"></i>Create an account</a>
+
+
+                        {% endif %}
                     </div>
                 </div>
             </div>

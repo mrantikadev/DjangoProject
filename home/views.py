@@ -1,3 +1,4 @@
+from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
@@ -87,6 +88,31 @@ def content_detail(request, id, slug):
     context = {'category': category,
                'content':content}
     return render(request, 'content_detail.html', context)
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş başarısız! Hatalı kullanıcı adı veya parola girişi.")
+            return HttpResponseRedirect('/login')
+    return render(request, 'login.html')
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        return HttpResponse("Sign up")
+    return render(request), 'signup.html')
 
 
 
