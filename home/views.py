@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
 
-
+from home.forms import SignUpForm
 # Create your views here.
 from home.models import Settings, ContactFormu, ContactFormMessage
 from Content.models import Content, Category
@@ -13,7 +13,7 @@ def index(request):
     settings = Settings.objects.get(pk=1)
     category = Category.objects.all()
     sliderdata = Content.objects.all()[:6]
-    contents = Content.objects.all()[:4]
+    contents = Content.objects.all()
     lastcontents = Content.objects.all().order_by('-id')[:4]
     randomcontents = Content.objects.all().order_by('?')[:4]
     context = {'settings':settings,
@@ -111,8 +111,18 @@ def login_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        return HttpResponse("Sign up")
-    return render(request), 'signup.html')
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+
+    form = SignUpForm()
+    context = {'form': form}
+    return render(request, 'signup.html', context)
 
 
 
