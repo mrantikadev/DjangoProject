@@ -1,0 +1,38 @@
+{% extends "homepage.html" %}
+
+{% block title %}  {{ content.title }} {% endblock %}
+{% block keywords %} {{ content.keywords }} {% endblock %}
+{% block description %} {{ content.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ settings.icon.url }}'>
+{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
+        <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="row">
+                <div class="col-lg-12 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+
+                        <img class="img-fluid" src="{{ content.image.url }}" alt="" style="height: 760px">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ content.konum }}</small>
+                            </div>
+                            <h3>{{ content.title }}</h3>
+                            <p class="h5 text-decoration-none" href="/content_detail">{{ content.description }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

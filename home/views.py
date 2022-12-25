@@ -5,10 +5,12 @@ from django.contrib import messages
 
 # Create your views here.
 from home.models import Settings, ContactFormu, ContactFormMessage
-from Content.models import Content
+from Content.models import Content, Category
+
 
 def index(request):
     settings = Settings.objects.get(pk=1)
+    category = Category.objects.all()
     sliderdata = Content.objects.all()[:6]
     contents = Content.objects.all()[:4]
     lastcontents = Content.objects.all().order_by('-id')[:4]
@@ -16,6 +18,7 @@ def index(request):
     context = {'settings':settings,
                'page': 'home',
                'sliderdata':sliderdata,
+               'category': category,
                'contents':contents,
                'lastcontents':lastcontents,
                'randomcontents':randomcontents
@@ -29,6 +32,14 @@ def aktiviteler(request):
     context = {'settings':settings,
                'randomcontents':randomcontents}
     return render(request, 'aktiviteler.html', context)
+
+
+def content_detail(request):
+    settings = Settings.objects.get(pk=1)
+    content = Content.objects.all().order_by('?')[:1]
+    context = {'settings':settings,
+               'content':content}
+    return render(request, 'content_detail.html', context)
 
 def hakkimizda(request):
     settings = Settings.objects.get(pk=1)
@@ -60,4 +71,22 @@ def iletisim(request):
     form = ContactFormu()
     context = {'settings':settings, 'form':form}
     return render(request, 'iletisim.html', context)
+
+
+def category_contents(request, id, slug):
+    category = Category.objects.all()
+    contents = Content.objects.filter(category_id=id)
+    context = {'contents':contents,
+               'category':category}
+    return render(request, 'aktivite.html', context)
+
+
+def content_detail(request, id, slug):
+    category = Category.objects.all()
+    content = Content.objects.get(pk=id)
+    context = {'category': category,
+               'content':content}
+    return render(request, 'content_detail.html', context)
+
+
 

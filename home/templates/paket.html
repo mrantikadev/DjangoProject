@@ -18,7 +18,7 @@
                 <h1>Aktivitlere Göz Atın</h1>
             </div>
             <div class="row">
-                {% for rs in randomcontents %}
+                {% for rs in contents %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="package-item bg-white mb-2">
                         <img class="img-fluid" src="{{ rs.image.url }}" alt="" style="height: 300px;">
@@ -27,7 +27,7 @@
                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ rs.konum }}</small>
                             </div>
                             <h3>{{ rs.title }}</h3>
-                            <a class="h5 text-decoration-none" href="/content/{{ rs.id }}/{{ rs.slug }}">{{ rs.description }}</a>
+                            <a class="h5 text-decoration-none" href="/content_detail">{{ rs.description }}</a>
                         </div>
                     </div>
                 </div>

@@ -203,6 +203,7 @@
 
 
     <!-- Testimonial Start -->
+
     <div class="container-fluid p-5">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Aktiviteler</h6>
@@ -212,12 +213,12 @@
             <div class="carousel-inner w-50" style="margin-left: 25%">
                 {% for rs in contents %}
                     <div class="carousel-item{% if forloop.counter == 1 %} active{% endif %}">
-                        <img class="w-100" src="{{ rs.image.url }}" alt="Image">
+                        <img class="w-100" src="{{ rs.image.url }}" alt="Image" style="height: 500px">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
                                 <h4 class="text-white text-uppercase mb-md-3">{{ rs.title }}</h4>
                                 <h1 class="display-3 text-white mb-md-4">{{ rs.description }}</h1>
-                                <a href="/Content/{{ rs.id }}/{{ rs.slug }}" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                                <a href="/content/{{ rs.id }}/{{ rs.slug }}" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                             </div>
                         </div>
                     </div>

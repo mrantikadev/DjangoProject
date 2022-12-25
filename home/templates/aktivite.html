@@ -1,0 +1,17 @@
+{% extends "homepage.html" %}
+
+{% block title %} Aktiviteler - {{ settings.company }} {% endblock %}
+{% block keywords %} {{ settings.keywords }} {% endblock %}
+{% block description %} {{ settings.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ settings.icon.url }}'>
+{% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block body %}
+    {% include "paket.html" %}
+{% endblock %}

@@ -1,5 +1,5 @@
 {% load static %}    
-<!-- Carousel Start -->
+<!-- Carousel Start{ rs.id }}/{ rs.slug }} -->
 <script src="{% static 'js/main.js' %}"></script>
 
     <div class="container-fluid p-0">
@@ -8,12 +8,12 @@
             <div class="carousel-inner">
                 {% for rs in sliderdata %}
                 <div class="carousel-item{% if forloop.counter == 1 %} active{% endif %}">
-                    <img class="w-100" src="{{ rs.image.url }}" alt="Image">
+                    <img class="w-100" src="{{ rs.image.url }}" alt="Image" style="height: 1080px">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">{{ rs.title }}</h4>
                             <h1 class="display-3 text-white mb-md-4">{{ rs.description }}</h1>
-                            <a href="/Content/{{ rs.id }}/{{ rs.slug }}" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <a href="/aktiviteler" class="btn btn-primary py-md-3 px-md-5 mt-2">Katıl</a>
                         </div>
                     </div>
                 </div>
