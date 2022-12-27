@@ -15,7 +15,7 @@ def index(request):
     sliderdata = Content.objects.all()[:6]
     contents = Content.objects.all()
     lastcontents = Content.objects.all().order_by('-id')[:4]
-    randomcontents = Content.objects.all().order_by('?')[:4]
+    randomcontents = Content.objects.all().order_by('?')
     context = {'settings':settings,
                'page': 'home',
                'sliderdata':sliderdata,

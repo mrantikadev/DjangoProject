@@ -137,7 +137,32 @@
         </div>
     </div>
 -->
-    <!--Packages End-->
+<!--Packages Start-->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Aktiviteler</h6>
+                <h1>Aktivitlere Göz Atın</h1>
+            </div>
+            <div class="row">
+                {% for rs in randomcontents %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="" style="height: 300px;">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ rs.konum }}</small>
+                            </div>
+                            <h3>{{ rs.title }}</h3>
+                            <a class="h5 text-decoration-none" href="/content/{{ rs.id }}/{{ rs.slug }}">{{ rs.description }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+<!--Packages End-->
 
 
     <!--RegistrationStart -->
